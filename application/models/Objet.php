@@ -58,10 +58,30 @@
             return $this->db->update("objet", $data);
         }
 
-        public function echange_object($idObjet, $idObjetARemplacer) {
-            $data = array(
-                'idmembre' => $id
-            );
+        public function echange_object($idProposition) {
+
+            $proposition = $this->demande->get_demande($idProposition);
+            $this->load->model('objet');
+            $Objet1 = $this->objet->get_objet($proposition['idObjet1']);
+            $Objet2 = $this->objet->get_objet($proposition['idObjet2']);
+            
+            $data =  array( 'idmembre' => $Objet1['idMembre']);
+            $this->db->where('id', $Objet2['id']);
+            $this->db->update_objet('objet', $data);
+
+            $data =  array( 'idmembre' => $Objet2['idMembre']);
+            $this->db->where('id', $Objet1['id']);
+            $this->db->update_objet('objet', $data);
+            
+    
         }
 
+        public function get_objet($id = null) {
+            if ($id) {
+                $this->db->where('id', $id);
+            }
+    
+            $query = $this->db->get('objet');
+            return $query->result_array();
+        }
     }

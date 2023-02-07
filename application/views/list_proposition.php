@@ -14,7 +14,7 @@
 
             <div class="box">
                 <?php echo $proposition[$i]['proposé']; echo $proposition[$i]['miproposé']; ?> 
-                <form action="accepter" method="post">
+                <form action="<?php echo site_url('accepter')?>" method="post">
                     <input type="hidden" name="idProposition" value="<?php echo $proposition[$i]['id'] ?>">
                     <input type="submit" value="Echange">
                 </form>    

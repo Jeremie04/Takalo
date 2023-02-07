@@ -13,7 +13,7 @@
             <?php echo $objet[$i]['titre'];
                for($a=0; $a<count($objet[$i]['photo']); $a++){ ?> 
             <?php $photo = $objet[$i]['photo'][$a]; echo $photo['nom'];} ?>
-            <form action="../DemandeController/demander" method="post">
+            <form action="<?php echo site_url('DemandeController/demander')?>" method="post">
                 <input type="hidden" name="objetaproposer" value="<?php echo $objetaproposer ?>">
                 <input type="hidden" name="idObjet" value="<?php echo $objet[$i]['id'] ?>">
                 <input type="submit" value="Echange avec">
