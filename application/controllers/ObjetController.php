@@ -10,13 +10,13 @@
             $array['objetaproposer'] = $this->input->post('idObjet');
             echo $array['objetaproposer'];
 
-            $this->load->view('pages/list_objetUser', $array);
+            $this->load->view('list_objetUser', $array);
         }
 
         public function others($idUser=''){
             $this->load->model('objet');
             $data['objet'] = $this->objet->getOtherObjects($idUser);
 
-            $this->load->view('pages/list_objetOthers', $data);
+            $this->load->view('list_objetOthers', $data);
         }
     }

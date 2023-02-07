@@ -9,7 +9,7 @@ class DemandeController extends CI_Controller {
         $this->load->model('demande');
         $data['proposition'] = $this->demande->getListeProposition($idUser);
 
-        $this->load->view('pages/list_proposition', $data);
+        $this->load->view('list_proposition', $data);
     }
 
     public function demander(){

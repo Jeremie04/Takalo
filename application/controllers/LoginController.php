@@ -14,7 +14,7 @@ class LoginController extends CI_Controller {
         if($nom=='Ranto'&&$pass=='pass'){
             $this->load->library('session');
            $d = $this->session->set_userdata($data);
-            $this->load->view('pages/home');
+            $this->load->view('home');
         }else {
             echo "tsia";
         }
@@ -22,6 +22,6 @@ class LoginController extends CI_Controller {
     
     public function index()
 	{
-		$this->load->view('pages/login');
+		$this->load->view('login');
 	}
 }
