@@ -79,11 +79,9 @@ create table demande(
     foreign key (idobjet2) references objet(id)
 );
 
-insert into demande values('', 1, 2, 0);
-insert into demande values('', 3, 4, 0);
-insert into demande values('', 5, 4, 0);
-insert into demande values('', 2, 1, 1);
-insert into demande values('', 6, 1, 1);
+insert into demande values('', 1, 2, "2022-02-12 01:12:41",null);
+insert into demande values('', 1, 4, "2022-02-12 01:12:41","2022-02-13 05:12:32");
+
 
 
 // liste de propositions
