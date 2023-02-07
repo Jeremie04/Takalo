@@ -27,7 +27,8 @@ class DemandeController extends CI_Controller {
         $this->load->model('demande');
         $this->demande->accepter($idProposition);
         
-
+        $this->load->model('objet');
+        $this->objet->echange_object($idProposition);
 
         redirect('DemandeController/index');
     }
