@@ -60,20 +60,21 @@
 
         public function echange_object($idProposition) {
 
+            //on sélectionne la demande(proposition)
             $proposition = $this->demande->get_demande($idProposition);
             $this->load->model('objet');
-            $Objet1 = $this->objet->get_objet($proposition['idObjet1']);
-            $Objet2 = $this->objet->get_objet($proposition['idObjet2']);
+            //selection des deux objets à echanger
+            $Objet1 = $this->objet->get_objet($proposition[0]['idObjet1']);
+            $Objet2 = $this->objet->get_objet($proposition[0]['idObjet2']);
             
-            $data =  array( 'idmembre' => $Objet1['idMembre']);
-            $this->db->where('id', $Objet2['id']);
-            $this->db->update_objet('objet', $data);
+            $data =  array( 'idmembre' => $Objet1[0]['idMembre']);
+            $this->db->where('id', $Objet1[0]['id']);
+            $this->objet->update_object('objet', $data);
 
-            $data =  array( 'idmembre' => $Objet2['idMembre']);
-            $this->db->where('id', $Objet1['id']);
-            $this->db->update_objet('objet', $data);
-            
-    
+            $data =  array( 'idmembre' => $Objet2[0]['idMembre']);
+            $this->db->where('id', $Objet2[0]['id']);
+            $this->objet->update_object('objet', $data);
+                
         }
 
         public function get_objet($id = null) {

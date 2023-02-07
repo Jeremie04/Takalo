@@ -32,4 +32,13 @@ class DemandeController extends CI_Controller {
 
         redirect('DemandeController/index');
     }
+
+    public function refuser(){
+        $idProposition = $this->input->post('idProposition');
+
+        $this->load->model('demande');
+        $this->demande->delete($idProposition);
+        
+        redirect('DemandeController/index');
+    }
 }

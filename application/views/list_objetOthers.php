@@ -6,14 +6,14 @@
 </head>
 <body>
     <div class="container">
-
+    <a href="<?php echo site_url('DemandeController/index')?>">liste Proposition</a>
     <?php echo count($objet); for($i=0; $i<count($objet); $i++){  ?>
 
         <div class="box">
             <?php echo $objet[$i]['titre']; ?>
             <?php for($a=0; $a<count($objet[$i]['photo']); $a++){ ?> 
                 <?php $photo = $objet[$i]['photo'][$a]; echo $photo['nom'];} ?>
-            <form action="<?php echo site_url('userObject')?>" method="post">
+            <form action="<?php echo site_url('ObjetController/userObject')?>" method="post">
                 <input type="hidden" name="idObjet" value="<?php echo $objet[$i]['id'] ?>">
                 <input type="submit" value="Echange">
             </form>

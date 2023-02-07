@@ -14,9 +14,13 @@
 
             <div class="box">
                 <?php echo $proposition[$i]['proposé']; echo $proposition[$i]['miproposé']; ?> 
-                <form action="<?php echo site_url('accepter')?>" method="post">
+                <form action="<?php echo site_url('DemandeController/accepter')?>" method="post">
                     <input type="hidden" name="idProposition" value="<?php echo $proposition[$i]['id'] ?>">
-                    <input type="submit" value="Echange">
+                    <input type="submit" value="accepter">
+                </form>    
+                <form action="<?php echo site_url('DemandeController/refuser')?>" method="post">
+                    <input type="hidden" name="idProposition" value="<?php echo $proposition[$i]['id'] ?>">
+                    <input type="submit" value="refuser">
                 </form>    
             </div>
             

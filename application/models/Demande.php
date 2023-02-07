@@ -37,4 +37,9 @@
             return $query->result_array();
         }
 
+        public function delete($id) {
+            $this->db->where('id', $id);
+            $this->db->delete('demande');
+        }
+
     }
