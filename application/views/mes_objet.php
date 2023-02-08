@@ -58,7 +58,7 @@
               for($i=0;$i<count($objet);$i++){?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="../assets/img/niketech.jpg" alt=""></a>
+              <a href="#"><img class="card-img-top" src="../assets/img/<?php echo $objet[$i]['nom']?>" alt=""></a>
               <div class="card-body">
                   <h4 class="card-title">
                     <a href="#"><?php echo $objet[$i]['titre']?></a>
@@ -80,7 +80,7 @@
           <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">ANDRIAKOTOHARISON Irina : ETU1924</p>
-      <p class="m-0 text-center text-white">Anja  :  ETU00</p>
+      <p class="m-0 text-center text-white">RAKOTOMAVO Arisoa Anjamalala  :  ETU002007</p>
       <p class="m-0 text-center text-white">Ranto  :  ETU00</p>
 
     </div>

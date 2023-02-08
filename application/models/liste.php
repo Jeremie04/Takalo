@@ -20,7 +20,7 @@ class Liste extends CI_Model {
         return $tab;
     }
     public function my_objet(){
-        $query=$this->db->query("SELECT * from objet where idMembre='".$this->session->userdata('id')."'");
+        $query=$this->db->query("SELECT * from photo join objet on photo.idObjet=objet.id where idMembre='".$this->session->userdata('id')."'");
         $tab=$query->result_array();
         return $tab;
     }
