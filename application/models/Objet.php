@@ -67,13 +67,13 @@
             $Objet1 = $this->objet->get_objet($proposition[0]['idObjet1']);
             $Objet2 = $this->objet->get_objet($proposition[0]['idObjet2']);
             
-            $data =  array( 'idmembre' => $Objet1[0]['idMembre']);
+            $data1 =  array( 'idmembre' => $Objet1[0]['idMembre']);
             $this->db->where('id', $Objet1[0]['id']);
-            $this->objet->update_object('objet', $data);
+            $this->objet->update_object('objet', $data1);
 
-            $data =  array( 'idmembre' => $Objet2[0]['idMembre']);
+            $data2 =  array( 'idmembre' => $Objet2[0]['idMembre']);
             $this->db->where('id', $Objet2[0]['id']);
-            $this->objet->update_object('objet', $data);
+            $this->objet->update_object('objet', $data2);
                 
         }
 

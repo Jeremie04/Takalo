@@ -33,7 +33,7 @@ class Welcome extends CI_Controller {
 			}
 		}
 		if($id!=null){
-            $this->session->set_userdata('id', $id);
+            $this->session->set_userdata('idUser', $id);
             $this->session->set_userdata('id_admin', $id_admin);
 			redirect(site_url('Affiche/listeCat'));
             
@@ -44,7 +44,9 @@ class Welcome extends CI_Controller {
 	}
 	public function index()
 	{
+		//$this->load->view('header');
 		$this->load->view('login');
+		//$this->load->view('footer');
 		
 	}		
 }

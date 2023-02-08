@@ -5,7 +5,9 @@ class Affiche extends CI_Controller {
     public function listeCat(){
         $this->load->model('liste');
         $data['objet']=$this->liste->select_categorie();
+        $this->load->view('header');
         $this->load->view('home',$data);
+        $this->load->view('footer');
     }
     public function category_selector(){
         $cat=$_GET['id_cat'];

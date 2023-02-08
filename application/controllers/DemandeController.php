@@ -3,13 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DemandeController extends CI_Controller {
     public function index(){
-        // idUser alaina avy anaty session !!!
-        $idUser=1;
+        $this->load->library('session');
+        if(!$this->session->userdata('idUser')){
+            redirect('Welcome/login');
+        }
+        $idUser = $_SESSION['idUser'];
+        //$idUser=1;
 
         $this->load->model('demande');
         $data['proposition'] = $this->demande->getListeProposition($idUser);
 
+        $this->load->view('header');
         $this->load->view('list_proposition', $data);
+        $this->load->view('footer');
     }
 
     public function demander(){
@@ -40,5 +46,10 @@ class DemandeController extends CI_Controller {
         $this->demande->delete($idProposition);
         
         redirect('DemandeController/index');
+    }
+
+    public function getNombreEchangeEffectue(){
+        $query = $this->db->query("select count(id) from demande d where d.dateAcceptation is not null;");
+        return $query->result_array();
     }
 }

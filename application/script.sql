@@ -26,7 +26,7 @@ insert into categorie values('','Livres');
 create table photo(
     id int auto_increment primary key,
     nom varchar(255),
-    idObjet int, 
+    idObjet int 
 );
 insert into photo values('','hlrg.jpg',1);
 insert into photo values('','hrlgB.jpg',1);
@@ -88,7 +88,26 @@ insert into demande values('', 1, 4, "2022-02-12 01:12:41","2022-02-13 05:12:32"
 
 select d.id, op.titre proposé, om.titre miproposé  
 from demande d 
-join objet op on d.idObjet2=o.id 
-join objet om on d.idObjet1=o.id 
-where op.idmembre=1 
-and d.acceptation=0;
+join objet op on d.idObjet2=op.id 
+join objet om on d.idObjet1=om.id 
+where op.idmembre=2
+and d.dateacceptation is null;
+
+select d.id, op.titre proposé, op.idmembre, om.titre miproposé, d.dateacceptation  
+from demande d 
+join objet op on d.idObjet2=op.id 
+join objet om on d.idObjet1=om.id
+where op.idmembre=2
+and d.dateacceptation is not null;
+
+// nombre echanges
+
+select count(id)
+from demande d
+where d.dateacceptation is not null;
+
+// nombre membre
+
+select count(id)
+from membre M
+where M.admin=0;
