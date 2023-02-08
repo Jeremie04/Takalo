@@ -34,6 +34,15 @@ class Affiche extends CI_Controller {
         $data['histo']=$this->objet->getHistoriqueAppartenance($_GET['id']);
         $this->load->view('details_obj',$data);
     }
+
+    public function listeBetween(){
+        $this->load->model('objet');
+        $this->load->model('liste');
+        $data['objet']=$this->objet->getListObject($_GET['id'], $_GET['value']);
+        $this->load->view('header');
+        $this->load->view('listeBetween',$data);
+        $this->load->view('footer');
+    }
     
 
 }

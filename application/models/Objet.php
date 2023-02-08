@@ -89,4 +89,11 @@
             
             return $query->result_array();
         }
+
+        public function getListObject($idObjet, $value){
+            $sql = "select * from objet where prix between (select (prix-(prix*$value)/100) from objet where id ='".$idObjet."') and (select (prix+(prix*$value)/100) from objet where id = '".$idObjet."'); ";
+            $query=$this->db->query($sql);
+            
+            return $query->result_array();
+        }
     }

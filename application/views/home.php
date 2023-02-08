@@ -59,7 +59,8 @@
                 <h5><?php ?><?php echo $one[$i]['prix'];?>Ar</h5>
                 <p class="card-text"><?php echo$one[$i]['description'];?></p>
               </div>
-              
+              <a href="<?php echo site_url('Affiche/listeBetween');?>?id=<?php echo $one[$i]['idObjet']?>&value=10">+/- 10%</a>
+              <a href="<?php echo site_url('Affiche/listeBetween');?>?id=<?php echo $one[$i]['idObjet']?>&value=20">+/- 20%</a>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>

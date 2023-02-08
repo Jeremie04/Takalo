@@ -9,25 +9,56 @@ create table membre(
     password varchar(255),
     admin int 
 );
-insert into membre values(NULL,'bob','bob@gmail.com','banane',0);
-insert into membre values(NULL,'rose','rose@gmail.com','poire',1);
-insert into membre values(NULL,'jack','jack@gmail.com','anana',0);
 
 create table categorie(
     id int auto_increment primary key,
     categorie varchar(255)
 );
+
+
+create table objet(
+    id int auto_increment primary key,
+    idMembre int,
+    idCategorie varchar(255),
+    titre varchar(255),
+    description varchar(255),
+    prix float,
+    foreign key (idMembre) references membre(id),
+    foreign key (idcategorie) references categorie(id)
+);
+
+
+create table photo(
+    id int auto_increment primary key,
+    nom varchar(255),
+    idObjet int,
+    foreign key (idobjet) references objet(id),
+);
+
+
+create table demande(
+    id int auto_increment primary key,
+    idObjet1 int,
+    idObjet2 int,
+    dateDemande datetime,
+    dateAcceptation datetime,
+    foreign key (idobjet1) references objet(id),
+    foreign key (idobjet2) references objet(id)
+);
+
+
+-----------------insertion de données----------------
+insert into membre values(NULL,'bob','bob@gmail.com','banane',0);
+insert into membre values(NULL,'rose','rose@gmail.com','poire',1);
+insert into membre values(NULL,'jack','jack@gmail.com','anana',0);
+
+
 insert into categorie values(NULL,'Vetements');
 insert into categorie values(NULL,'Utilitaire');
 insert into categorie values(NULL,'Electronique');
 insert into categorie values(NULL,'Livres');
 
 
-create table photo(
-    id int auto_increment primary key,
-    nom varchar(255),
-    idObjet int
-);
 insert into photo values(NULL,'hlrg.jpg',1);
 insert into photo values(NULL,'hrlgB.jpg',1);
 insert into photo values(NULL,'télécharger.jpg',2);
@@ -46,16 +77,7 @@ insert into photo values(NULL,'bottes.jpg',9);
 insert into photo values(NULL,'niketech.jpg',10);
 insert into photo values(NULL,'niketech2.jpg',10);
 
-create table objet(
-    id int auto_increment primary key,
-    idMembre int,
-    idCategorie varchar(255),
-    titre varchar(255),
-    description varchar(255),
-    prix float,
-    foreign key (idMembre) references membre(id),
-    foreign key (idcategorie) references categorie(id)
-);
+
 insert into objet values(NULL,1,6,'Horloge bleu','Horloge murale bleu ideale dans la cuisine',50);
 insert into objet values(NULL,2,1,'Pull Nike noir','Haut Nike noir S',150);
 insert into objet values(NULL,3,4,'After','Livre After',34);
@@ -68,16 +90,6 @@ insert into objet values(NULL,2,1,'Boots Palladium','Boots Palladium TBE',27);
 insert into objet values(NULL,3,1,'Nike Tech','Nike Tech Blanc',290);
 
 
-
-create table demande(
-    id int auto_increment primary key,
-    idObjet1 int,
-    idObjet2 int,
-    dateDemande datetime,
-    dateAcceptation datetime,
-    foreign key (idobjet1) references objet(id),
-    foreign key (idobjet2) references objet(id)
-);
 
 insert into demande values(NULL, 1, 2, "2022-02-12 01:12:41",null);
 insert into demande values(NULL, 1, 4, "2022-02-12 01:12:41","2022-02-13 05:12:32");
@@ -119,3 +131,16 @@ select m.nom
     join membre m on o.idMembre = m.id
     where d.dateAcceptation not like "null"
     and d.idObjet2 = 4;
+
+
+-- Selection objet + - 10%
+
+select * from objet
+where prix between
+(select (prix-(prix*20)/100) from objet 
+where id = 1)
+and
+(select (prix+(prix*20)/100) from objet
+where id = 1); 
+
+

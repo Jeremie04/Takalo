@@ -17,11 +17,11 @@
         <form action="<?php echo site_url('Welcome/login'); ?>"id="myForm" method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Adresse Email:</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="rose@gmail.com">
       </div>
       <div class="form-group">
           <label for="exampleInputPassword1">Mot de passe:</label>
-          <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password" value="poire>
       </div>
       <button type="submit" class="btn btn-default">Se connecter</button>
     </form> <br>
@@ -30,7 +30,7 @@
     <div class="footer">
           <p>ANDRIAKOTOHARISON Irina : ETU1924</p>
           <p>RAKOTOMAVO Arisoa Anjamalala  :  ETU002007</p>
-          <p>Ranto  :  ETU00</p>
+          <p>RAVONINAHITRA Ranto Ny Aina Jeremie  :  ETU0066</p>
     </div>
 </body>
 </html>
