@@ -29,7 +29,9 @@ class Affiche extends CI_Controller {
     }
     public function details(){
         $this->load->model('liste');
+        $this->load->model('objet');
         $data['objet']=$this->liste->picture_one($_GET['id']);
+        $data['histo']=$this->objet->getHistoriqueAppartenance($_GET['id']);
         $this->load->view('details_obj',$data);
     }
     

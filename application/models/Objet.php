@@ -80,4 +80,13 @@
             $query = $this->db->get('objet');
             return $query->result_array();
         }
+
+        
+        public function getHistoriqueAppartenance($idObjet){
+            $null = "null";
+            $sql ="select m.nom, d.dateAcceptation from demande d join objet o on d.idObjet2=o.id join membre m on o.idMembre = m.id where d.dateAcceptation not like '$null' and d.idObjet2 = '".$idObjet."'";
+            $query=$this->db->query($sql);
+            
+            return $query->result_array();
+        }
     }

@@ -30,7 +30,8 @@ class Liste extends CI_Model {
         return $tab;
     }
     public function picture_one($id){
-        $query=$this->db->query("SELECT * from photo join objet on photo.idObjet=objet.id where idObjet='.$id.'");
+        $query=$this->db->query("SELECT * from photo join objet on photo.idObjet=objet.id where idObjet='$id'");
+        ///echo $query;
         $tab=$query->result_array();
         return $tab;
     }
