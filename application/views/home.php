@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+  <form action="<?php echo site_url('Recherche/search')?>" method="get">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -27,6 +27,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <input type="text" name="cle">
+          <select name="selected" id="">
+            <?php for($i=0;$i<count($objet);$i++) {?>
+              <option value="<?php echo $objet[$i]['id']?>"><?php echo $objet[$i]['categorie'];?></option>
+        <?php }?>
+          </select>
+          <input type="submit" value="Rechercher">
           <li class="nav-item active">
             <a class="nav-link" href="<?php echo site_url('Affiche/listeCat')?>">Home
               <span class="sr-only">(current)</span>
@@ -194,7 +201,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/vendor/js/bootstrap.bundle.min.js"></script>
-
+  </form>
 </body>
 
 </html>
