@@ -16,7 +16,7 @@ class Fonctionalite extends CI_Model {
         
     }
     public function supprimer_cat($nom){
-        $sql = 'DELETE from categorie where categorie="'.$nom.'" ';
+        $sql = 'DELETE from objet where idCategorie="'.$nom.'" ';
         $this->db->query($sql);
         
     }

@@ -17,39 +17,8 @@
 </head>
 
 <body>
-  <form action="<?php echo site_url('Recherche/search')?>" method="get">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="home.php" style="font-size:25px;">Takalo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <input type="text" name="cle">
-          <select name="selected" id="">
-            <?php for($i=0;$i<count($objet);$i++) {?>
-              <option value="<?php echo $objet[$i]['id']?>"><?php echo $objet[$i]['categorie'];?></option>
-        <?php }?>
-          </select>
-          <input type="submit" value="Rechercher">
-          <li class="nav-item active">
-            <a class="nav-link" href="<?php echo site_url('Affiche/listeCat')?>">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Notifications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('Welcome/index')?>">Log Out</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-<br> <br>
+ 
+ 
   <!-- Page Content -->
   <div class="container">
 
@@ -62,7 +31,7 @@
         
         <?php for($i=0;$i<count($objet);$i++) {?>
           <?php if($this->session->userdata('id_admin')==1){?>
-          <a href="<?php echo site_url('Fonction/sup_cat'); ?>?id=<?php echo $objet[$i]['categorie']?>" >Supprimer</a>
+          <a href="<?php echo site_url('Fonction/sup_cat'); ?>?id=<?php echo $objet[$i]['id']?>" >Supprimer all Categories</a>
           <a href="<?php echo site_url('Affiche/category_selector'); ?>?id_cat=<?php echo $objet[$i]['id']?>" class="list-group-item"><?php echo $objet[$i]['categorie'];?>
           
        <?php }}?>
@@ -79,17 +48,16 @@
         <br> <br>
         <div class="row">
         
-        <?php for($i=0;$i<6;$i++){?>
-          <?php $ran=rand(0,count($one)-1);?>
+        <?php for($i=0;$i<count($one);$i++){?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <img class="card-img-top" src="../assets/img/<?php echo $one[$ran]['nom']?>" alt="">
+              <img class="card-img-top" src="../assets/img/<?php echo $one[$i]['nom']?>" alt="">
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="<?php echo site_url('Affiche/details');?>?id=<?php echo $one[$ran]['idObjet']?>"><?php echo $one[$ran]['titre'];?></a>
+                  <a href="<?php echo site_url('Affiche/details');?>?id=<?php echo $one[$i]['idObjet']?>"><?php echo $one[$i]['titre'];?></a>
                 </h4>
-                <h5><?php ?><?php echo $one[$ran]['prix'];?>Ar</h5>
-                <p class="card-text"><?php echo$one[$ran]['description'];?></p>
+                <h5><?php ?><?php echo $one[$i]['prix'];?>Ar</h5>
+                <p class="card-text"><?php echo$one[$i]['description'];?></p>
               </div>
               
               <div class="card-footer">
@@ -114,21 +82,12 @@
   </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">ANDRIAKOTOHARISON Irina : ETU1924</p>
-      <p class="m-0 text-center text-white">RAKOTOMAVO Arisoa Anjamalala  :  ETU002007</p>
-      <p class="m-0 text-center text-white">Ranto  :  ETU00</p>
-
-    </div>
-    <!-- /.container -->
-  </footer>
+  
 
   <!-- Bootstrap core JavaScript -->
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/vendor/js/bootstrap.bundle.min.js"></script>
-  </form>
+  
 </body>
 
 </html>
