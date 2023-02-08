@@ -11,9 +11,9 @@
         }
 
 
-        public function getUserObjects($idUser){
-            //$query = $this->db->query("SELECT * from objet where idmembre='".$idUser."'");
-            $query = $this->db->query("select * from objet where idmembre = 1");
+        public function getUserObjects(){
+            $idUser = $_SESSION['idUser'];
+            $query = $this->db->query("SELECT * from objet where idmembre='".$idUser."'");
             $return = array();
             foreach($query->result_array() as $row){
                 $objet = array();
@@ -31,8 +31,7 @@
         }
 
         public function getOtherObjects($idUser){
-            //$query = $this->db->query("SELECT * from objet where idmembre='".$idUser."'");
-            $query = $this->db->query("select * from objet where idmembre not like 1");
+            $query = $this->db->query("SELECT * from objet where idmembre not like '".$idUser."'");
             $return = array();
             foreach($query->result_array() as $row){
                 $objet = array();

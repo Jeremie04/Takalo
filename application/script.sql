@@ -86,7 +86,7 @@ insert into demande values('', 1, 4, "2022-02-12 01:12:41","2022-02-13 05:12:32"
 
 // liste de propositions
 
-select d.id, op.titre proposé, om.titre miproposé  
+select d.id, op.titre Objetproposé, op.idmembre, om.titre Objetmiproposé, om.idmembre  
 from demande d 
 join objet op on d.idObjet2=op.id 
 join objet om on d.idObjet1=om.id 

@@ -5,7 +5,7 @@
         }
 
         public function getListeProposition($idUser){
-            $query = $this->db->query("select d.id, op.titre proposé, om.titre miproposé  from demande d join objet op on d.idObjet2=op.id join objet om on d.idObjet1=om.id where op.idmembre=3 and d.dateacceptation is null;");
+            $query = $this->db->query("select d.id, op.titre proposé, om.titre miproposé  from demande d join objet op on d.idObjet2=op.id join objet om on d.idObjet1=om.id where op.idmembre='".$idUser."' and d.dateacceptation is null;");
 
             return $query->result_array();
         }
