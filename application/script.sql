@@ -56,7 +56,7 @@ create table objet(
     foreign key (idMembre) references membre(id),
     foreign key (idcategorie) references categorie(id)
 );
-insert into objet values('',1,2,'Horloge bleu','Horloge murale bleu ideale dans la cuisine',50);
+insert into objet values('',1,6,'Horloge bleu','Horloge murale bleu ideale dans la cuisine',50);
 insert into objet values('',2,1,'Pull Nike noir','Haut Nike noir S',150);
 insert into objet values('',3,4,'After','Livre After',34);
 insert into objet values('',1,1,'Jean bleu','Jean bleu encore en bon etat , Taille L',52);

@@ -58,7 +58,7 @@
               for($i=0;$i<count($objet);$i++){?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="../assets/img/niketech.jpg" alt=""></a>
+              <a href="#"><img class="card-img-top" src="../assets/img/<?php echo $objet[$i]['nom']?>" alt=""></a>
               <div class="card-body">
                   <h4 class="card-title">
                     <a href="#"><?php echo $objet[$i]['titre']?></a>
@@ -66,7 +66,7 @@
                 <h5><?php echo $objet[$i]['prix']?></h5>
                 <p class="card-text"><?php echo $objet[$i]['description']?></p>
               </div>
-              
+              <a href="<?php  echo site_url('Fonction/sup')?>?id_objet=<?php echo $objet[$i]['id']?>">Supprimer</a>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>

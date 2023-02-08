@@ -11,9 +11,9 @@
         }
 
 
-        public function getUserObjects($idUser){
-            //$query = $this->db->query("SELECT * from objet where idmembre='".$idUser."'");
-            $query = $this->db->query("select * from objet where idmembre = 1");
+        public function getUserObjects(){
+            $idUser = $_SESSION['idUser'];
+            $query = $this->db->query("SELECT * from objet where idmembre='".$idUser."'");
             $return = array();
             foreach($query->result_array() as $row){
                 $objet = array();
@@ -31,8 +31,7 @@
         }
 
         public function getOtherObjects($idUser){
-            //$query = $this->db->query("SELECT * from objet where idmembre='".$idUser."'");
-            $query = $this->db->query("select * from objet where idmembre not like 1");
+            $query = $this->db->query("SELECT * from objet where idmembre not like '".$idUser."'");
             $return = array();
             foreach($query->result_array() as $row){
                 $objet = array();
@@ -66,15 +65,11 @@
             //selection des deux objets à echanger
             $Objet1 = $this->objet->get_objet($proposition[0]['idObjet1']);
             $Objet2 = $this->objet->get_objet($proposition[0]['idObjet2']);
-            
-            $data =  array( 'idmembre' => $Objet1[0]['idMembre']);
-            $this->db->where('id', $Objet1[0]['id']);
-            $this->objet->update_object('objet', $data);
 
-            $data =  array( 'idmembre' => $Objet2[0]['idMembre']);
-            $this->db->where('id', $Objet2[0]['id']);
-            $this->objet->update_object('objet', $data);
-                
+            $sql1 = "Update objet set idmembre = '".$Objet1[0]['idMembre']."' where id = '".$Objet2[0]['id']."'";
+            $sql2 = "Update objet set idmembre = '".$Objet2[0]['idMembre']."' where id = '".$Objet1[0]['id']."'";
+            $this->db->query($sql1);
+            $this->db->query($sql2);
         }
 
         public function get_objet($id = null) {
