@@ -18,7 +18,7 @@ class Affiche extends CI_Controller {
     public function form_ajout(){
         $this->load->model('liste');
         $data['o']=$this->liste->select_categorie();
-        $this->load->view('ajout_Objet',$data);
+        $this->load->view('ajout_objet',$data);
     }
     public function mes_objet(){
         $this->load->model('liste');

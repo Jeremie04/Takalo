@@ -42,12 +42,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Notifications</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Welcome/index')?>">Log Out</a>
           </li>
@@ -65,9 +59,14 @@
 
         <h1 class="my-4">Categories:</h1>
         <div class="list-group">
+        
         <?php for($i=0;$i<count($objet);$i++) {?>
+          <?php if($this->session->userdata('id_admin')==1){?>
+          <a href="<?php echo site_url('Fonction/sup_cat'); ?>?id=<?php echo $objet[$i]['categorie']?>" >Supprimer</a>
           <a href="<?php echo site_url('Affiche/category_selector'); ?>?id_cat=<?php echo $objet[$i]['id']?>" class="list-group-item"><?php echo $objet[$i]['categorie'];?>
-        <?php }?>
+          
+       <?php }}?>
+        
           
         </div> <br> <br> <br> <br>
         <div class="nav">
@@ -79,11 +78,11 @@
       <div class="col-lg-9">
         <br> <br>
         <div class="row">
+        
         <?php for($i=0;$i<6;$i++){?>
+          <?php $ran=rand(0,count($one)-1);?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              
-                <?php $ran=rand(0,count($one));?>
               <img class="card-img-top" src="../assets/img/<?php echo $one[$ran]['nom']?>" alt="">
               <div class="card-body">
                 <h4 class="card-title">
@@ -101,86 +100,7 @@
           </div>
           <?php } ?>
 
-          <!-- <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="../assets/img/jb.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-
-                  <a href="#">Item Two</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Three</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Four</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Five</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Six</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div> -->
+          
 
         </div>
         <!-- /.row -->
