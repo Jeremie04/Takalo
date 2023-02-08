@@ -66,7 +66,7 @@
                 <h5><?php echo $objet[$i]['prix']?></h5>
                 <p class="card-text"><?php echo $objet[$i]['description']?></p>
               </div>
-              
+              <a href="<?php  echo site_url('Fonction/sup')?>?id_objet=<?php echo $objet[$i]['id']?>">Supprimer</a>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
