@@ -9,36 +9,88 @@ create table membre(
     password varchar(255),
     admin int 
 );
+insert into membre values('','bob','bob@gmail.com','banane',0);
+insert into membre values('','rose','rose@gmail.com','poire',1);
+insert into membre values('','jack','jack@gmail.com','anana',0);
 
 create table categorie(
     id int auto_increment primary key,
     categorie varchar(255)
 );
+insert into categorie values('','Vetements');
+insert into categorie values('','Utilitaire');
+insert into categorie values('','Electronique');
+insert into categorie values('','Livres');
+
 
 create table photo(
     id int auto_increment primary key,
     nom varchar(255),
-    idObjet int,
-    foreign key (idobjet) references objet(id)
+    idObjet int, 
 );
+insert into photo values('','hlrg.jpg',1);
+insert into photo values('','hrlgB.jpg',1);
+insert into photo values('','télécharger.jpg',2);
+insert into photo values('','nike.jpg',2);
+insert into photo values('','after.jpg',3);
+insert into photo values('','jean.jpg',4);
+insert into photo values('','jb.jpg',4);
+insert into photo values('','jean.jpeg',5);
+insert into photo values('','ip7.jpeg',6);
+insert into photo values('','iphone7.jpg',6);
+insert into photo values('','ip13.jpeg',7);
+insert into photo values('','ip.jpg',7);
+insert into photo values('','13.jpg',7);
+insert into photo values('','lv.jpg',8);
+insert into photo values('','bottes.jpg',9);
+insert into photo values('','niketech.jpg',10);
+insert into photo values('','niketech2.jpg',10);
 
 create table objet(
     id int auto_increment primary key,
     idMembre int,
     idCategorie varchar(255),
     titre varchar(255),
-    description varchar(355),
+    description varchar(255),
     prix float,
     foreign key (idMembre) references membre(id),
     foreign key (idcategorie) references categorie(id)
 );
+insert into objet values('',1,2,'Horloge bleu','Horloge murale bleu ideale dans la cuisine',50);
+insert into objet values('',2,1,'Pull Nike noir','Haut Nike noir S',150);
+insert into objet values('',3,4,'After','Livre After',34);
+insert into objet values('',1,1,'Jean bleu','Jean bleu encore en bon etat , Taille L',52);
+insert into objet values('',2,1,'Jean delave','Taille M',44);
+insert into objet values('',3,3,'Iphone 7+','IPhone 7+ non reconditionne,Batterie 95%',300);
+insert into objet values('',1,3,'IPhone 13 Pro','IPhone 13 Pro jamais utilise Modele LL',1200);
+insert into objet values('',2,4,'Red Queen & Glass Sword','Si vendu separemment : 50$ chacune',90);
+insert into objet values('',2,1,'Boots Palladium','Boots Palladium TBE',27);
+insert into objet values('',3,1,'Nike Tech','Nike Tech Blanc',290);
+
 
 
 create table demande(
     id int auto_increment primary key,
     idObjet1 int,
     idObjet2 int,
-    acceptation int,
+    dateDemande datetime,
+    dateAcceptation datetime,
     foreign key (idobjet1) references objet(id),
     foreign key (idobjet2) references objet(id)
 );
+
+insert into demande values('', 1, 2, 0);
+insert into demande values('', 3, 4, 0);
+insert into demande values('', 5, 4, 0);
+insert into demande values('', 2, 1, 1);
+insert into demande values('', 6, 1, 1);
+
+
+// liste de propositions
+
+select d.id, op.titre proposé, om.titre miproposé  
+from demande d 
+join objet op on d.idObjet2=o.id 
+join objet om on d.idObjet1=o.id 
+where op.idmembre=1 
+and d.acceptation=0;
